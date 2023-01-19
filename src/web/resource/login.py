@@ -97,7 +97,7 @@ class Login(Resource):
             else:
                 flag = str(self.__decoder__(doc[0]['password']), 'utf-8')==str(password)
                 if(flag):
-                    data = json.dumps({'status': 0, 'msg': 'Login success!', 'username': username, 'admin': doc[0]['isAdmin'],'token': self.__token_encoder__(password, username, doc[0]['isAdmin'], keep).decode("utf-8")})
+                    data = json.dumps({'status': 0, 'msg': 'Login success!', 'username': username, 'admin': doc[0]['isAdmin'],'token': self.__token_encoder__(password, username, doc[0]['isAdmin'], keep)})
                 else:
                     data = json.dumps({'status': 2, 'msg': 'Invalid password'})
                     Response(response=data, status= 401, mimetype="application/json")
