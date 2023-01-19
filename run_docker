@@ -1,0 +1,5 @@
+#!/bin/bash
+docker rm -f filemanagerback_release
+docker rmi filemanagerback:run
+docker build -t filemanagerback:run .
+docker run -it -p 5001:5001 --name filemanagerback_release filemanagerback:run /bin/bash
