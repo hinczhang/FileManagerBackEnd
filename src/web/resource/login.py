@@ -43,7 +43,7 @@ class Login(Resource):
         return res
     
     def __token_encoder__(self, password, username, isAdmin, keep):
-        exp_time = int(time.time() + 10000000) if keep else int(time.time()+ 10000)
+        exp_time = int(time.time() + 60*60*24*7) if keep else int(time.time()+ 60*60*24)
         payload = {"username": username, "password": password, "isAdmin": isAdmin, "keep": 1 if keep==True else 0, "exp": exp_time}
         return jwt.encode(payload=payload, key=salt, algorithm='HS256', headers=headers)
 
