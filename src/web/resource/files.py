@@ -137,7 +137,9 @@ class ManageFiles(Resource):
             else:
                 col.update_one({'username': form["username"]}, {"$set":{'current': doc['current'] + file_length}})
                 shutil.move(tmp_path, os.path.join(current_path, file.filename))
-                return Response(response = json.dumps({"msg": "Upload data successfully!", "status": 0}), status = 200, mimetype="application/json")
+                tmp_res = Response(response = json.dumps({"msg": "Upload data successfully!", "status": 0}), status = 200, mimetype="application/json")
+                tmp_res.headers.add('Access-Control-Allow-Origin', '*')
+                return tmp_res
         except Exception as e:
             print(repr(e))
             if os.path.exists(os.path.join(current_path, file.filename)):

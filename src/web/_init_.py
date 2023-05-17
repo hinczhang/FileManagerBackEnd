@@ -9,6 +9,7 @@ from web.resource.login import Login
 #end import block
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 CORS(app, supports_credentials=True) # CORS handle
 
 '''add api resource'''
