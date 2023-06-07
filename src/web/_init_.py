@@ -5,6 +5,7 @@ from flask_cors import CORS
 #start import block; free edit
 from web.resource.files import ManageFiles
 from web.resource.login import Login
+from web.resource.share import ShareFiles
 
 #end import block
 
@@ -18,5 +19,6 @@ api = Api(app)
 #start mode-use block; free edit
 api.add_resource(ManageFiles, '/api/files')
 api.add_resource(Login, '/api/login')
+api.add_resource(ShareFiles, '/api/share')
 
 #end mode-use block

@@ -1,5 +1,10 @@
 # FileManagerBackEnd
 The Flask backend of FileManager: https://github.com/hinczhang/FileManager
+### RUN
+```
+sh ./run_docker.sh
+```
+
 ### Response code requirement
 - 0: Successful response  
 - 1: Invalid operations  
