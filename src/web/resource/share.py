@@ -41,10 +41,10 @@ class ShareFiles(Resource):
             if os.path.exists(ROOT_PATH + path):
                 return send_file(ROOT_PATH + path, as_attachment=True)
             else:
-                return 'Forbidden', 403
+                return 'Forbidden: File does not exist!', 403
         except Exception as e:
             print(repr(e))
-            return 'Forbidden', 403
+            return 'Forbidden: Link expired.', 403
 
     def post(self):
         form = eval(str(request.data, encoding = "utf-8"))
