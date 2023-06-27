@@ -27,3 +27,9 @@ port= xxxx
 token_key = xxxx
 database_key = xxxx
 ```
+### Upload volume control
+```
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024 # 100MB
+```
+In `src/web/_init_.py`.  
+Please change the value of `MAX_CONTENT_LENGTH` to control the maximum size of uploaded files.
