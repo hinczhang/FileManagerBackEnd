@@ -10,6 +10,10 @@ import os
 import shutil
 import datetime
 import base64
+import pytz
+
+eastern_timezone = pytz.timezone('Asia/Shanghai')
+
 
 # opt
 conn = ConfigParser()
@@ -153,7 +157,8 @@ class ManageFiles(Resource):
         files_info = []
         for file in files:
             info = {}
-            create_time = datetime.datetime.fromtimestamp(os.path.getatime(file))
+            create_time = datetime.datetime.fromtimestamp(os.path.getctime(file))
+            create_time = create_time.astimezone(eastern_timezone)
             info["date"] = create_time.strftime('%Y-%m-%d')
             info["time"] = create_time.strftime('%H:%M:%S')
             info["name"] = file.split('/')[-1]
